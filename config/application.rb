@@ -10,6 +10,8 @@ module TestAngularRails
   class Application < Rails::Application
     I18n.enforce_available_locales = true
     
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.ico)
     config.assets.precompile += %w(*.eot *.woff *.ttf *.svg)
   
