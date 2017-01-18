@@ -32,4 +32,12 @@ class HomeController < ApplicationController
     
     render json: autos
   end
+  
+  def guarda_precios
+    if true
+      render json: {exito: "Exito"}, status: 200
+    else
+      render json: {error: "Hubo un error"}, status: 500
+    end
+  end
 end
