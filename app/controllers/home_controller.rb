@@ -34,8 +34,13 @@ class HomeController < ApplicationController
   end
   
   def guarda_precios
-    if true
-      render json: {exito: "Exito"}, status: 200
+    precios = JSON.parse(params[:precios],:symbolize_names => true)
+    if precios.class == Array && precios.length > 0
+      if !precios[0][:marca].nil? && !precios[0][:modelo].nil? && !precios[0][:precio].nil?
+        render json: {exito: "Exito"}, status: 200
+      else
+        render json: {error: "Los datos no cumplen con el formato especificado"}, status: 404
+      end
     else
       render json: {error: "Hubo un error"}, status: 500
     end
